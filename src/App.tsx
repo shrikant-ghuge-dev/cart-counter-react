@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
+import CartCounter from 'react-cart-counter';
 import './App.css';
 
-function App() {
+const App: React.FC = () => {
+  const handleCountChange = (count: number) => {
+    console.log('Cart count:', count);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CartCounter
+      initialCount={1}
+      minCount={0}
+      maxCount={10}
+      step={1}
+      onCountChange={handleCountChange}
+      incrementLabel="+"
+      decrementLabel="-"
+      className="cart-counter"
+      style={{ display: 'flex', alignItems: 'center' }}
+      buttonStyle={{ margin: '0 5px' }}
+      inputStyle={{ textAlign: 'center', width: '50px' }}
+    />
   );
-}
+};
 
 export default App;
